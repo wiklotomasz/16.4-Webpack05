@@ -18,8 +18,10 @@ class App extends React.Component {
                 }, {
                 id: 3,
                     text: 'feed my cat'
-                }]		
+                }],
+            value: ''
         };
+        this.removeTodo = this.removeTodo.bind(this);
     }
 
     addTodo(val) {			// dodawanie elementow do kolekcji / wartosc (val)

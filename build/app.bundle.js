@@ -7838,8 +7838,10 @@ var App = function (_React$Component) {
             }, {
                 id: 3,
                 text: 'feed my cat'
-            }]
+            }],
+            value: ''
         };
+        _this.removeTodo = _this.removeTodo.bind(_this);
         return _this;
     }
 
@@ -7928,9 +7930,58 @@ exports.default = Title;
 
 /***/ }),
 /* 31 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: C:/Users/Esu/Desktop/BOOTCAMP WD/PROJECTS/16.4Webpack04/src/components/TodoList.js: this is a reserved word (10:16)\n\n\u001b[0m \u001b[90m  8 | \u001b[39m}\u001b[33m;\u001b[39m\n \u001b[90m  9 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 | \u001b[39m\u001b[36mconst\u001b[39m remove \u001b[33m=\u001b[39m {\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mremoveItem\u001b[33m.\u001b[39mbind(\u001b[36mthis\u001b[39m)}\u001b[33m;\u001b[39m\n \u001b[90m    | \u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 | \u001b[39m\n \u001b[90m 12 | \u001b[39m\u001b[36mconst\u001b[39m \u001b[33mTodo\u001b[39m \u001b[33m=\u001b[39m ({item\u001b[33m,\u001b[39m removeItem}) \u001b[33m=>\u001b[39m {\n \u001b[90m 13 | \u001b[39m    \u001b[36mreturn\u001b[39m \u001b[33m<\u001b[39m\u001b[33mli\u001b[39m onClick \u001b[33m=\u001b[39m {() \u001b[33m=>\u001b[39m removeItem(item\u001b[33m.\u001b[39mid)}\u001b[33m>\u001b[39m {item\u001b[33m.\u001b[39mtext} \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mli\u001b[39m\u001b[33m>\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n");
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var TodoList = function TodoList(props) {
+    var todoList = props.list.map(function (item) {
+        return _react2.default.createElement(
+            'li',
+            { key: item.id },
+            item.text
+        );
+    });
+    return _react2.default.createElement(
+        'ul',
+        null,
+        todoList
+    );
+};
+
+var Todo = function Todo(_ref) {
+    var item = _ref.item,
+        removeItem = _ref.removeItem;
+
+    return _react2.default.createElement(
+        'li',
+        { onClick: function onClick() {
+                return removeItem(item.id);
+            } },
+        ' ',
+        item.text,
+        ' '
+    );
+};
+
+exports.default = TodoList;
+
+
+{/* item - pojedynczy element tablicy list[]  */}
+{/* lista - tablica z danymi z App.js (this.state.data)  */}
+{/* 'id' i 'text' są z tablicy this.state.data z App.js  */}
+{/* <ul>{todoList}</ul>;  --> zwroc nowa tablice 'todoList'  */}
 
 /***/ }),
 /* 32 */

@@ -7,17 +7,8 @@ const todoList = props.list.map(item => {
     return <ul>{todoList}</ul>;             
 };
 
-const remove = {this.removeItem.bind(this)};
-
 const Todo = ({item, removeItem}) => {
     return <li onClick = {() => removeItem(item.id)}> {item.text} </li>;
-};
-
-const TodoList = ({list, remove}) => {
-    const todoList = list.map(data => {
-        return <Todo item={data} removeItem={remove} key={data.id} />; 
-    });
-    return <ul className={style.TodoList}>{todoList}</ul>
 };
 
 export default TodoList;
