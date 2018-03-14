@@ -1020,7 +1020,7 @@ var _App = __webpack_require__(29);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _uuid = __webpack_require__(39);
+var _uuid = __webpack_require__(38);
 
 var _uuid2 = _interopRequireDefault(_uuid);
 
@@ -7798,15 +7798,11 @@ var _TodoList = __webpack_require__(31);
 
 var _TodoList2 = _interopRequireDefault(_TodoList);
 
-var _Todo = __webpack_require__(32);
-
-var _Todo2 = _interopRequireDefault(_Todo);
-
-var _TodoForm = __webpack_require__(33);
+var _TodoForm = __webpack_require__(32);
 
 var _TodoForm2 = _interopRequireDefault(_TodoForm);
 
-var _App = __webpack_require__(34);
+var _App = __webpack_require__(33);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -7819,6 +7815,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+//import Todo from '../components/Todo.js';
+
 
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
@@ -7876,7 +7874,7 @@ var App = function (_React$Component) {
                 '                                           ',
                 _react2.default.createElement(_Title2.default, { apptitle: 'Witaj na mojej stronie', desc: 'opis strony' }),
                 '                ',
-                _react2.default.createElement(_TodoList2.default, { list: this.state.data, remove: this.removeItem.bind(this) })
+                _react2.default.createElement(_TodoList2.default, { list: this.state.data, remove: this.removeTodo.bind(this) })
             );
         }
     }]);
@@ -7936,7 +7934,7 @@ exports.default = Title;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _react = __webpack_require__(1);
@@ -7946,33 +7944,29 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var TodoList = function TodoList(props) {
-    var todoList = props.list.map(function (item) {
-        return _react2.default.createElement(
-            'li',
-            { key: item.id },
-            item.text
-        );
-    });
-    return _react2.default.createElement(
-        'ul',
-        null,
-        todoList
-    );
+	var todoList = props.list.map(function (item) {
+		return _react2.default.createElement(Todo, { item: item, removeTodo: props.remove, key: item.id });
+	});
+	return _react2.default.createElement(
+		'ul',
+		null,
+		todoList
+	);
 };
 
 var Todo = function Todo(_ref) {
-    var item = _ref.item,
-        removeItem = _ref.removeItem;
+	var item = _ref.item,
+	    removeTodo = _ref.removeTodo;
 
-    return _react2.default.createElement(
-        'li',
-        { onClick: function onClick() {
-                return removeItem(item.id);
-            } },
-        ' ',
-        item.text,
-        ' '
-    );
+	return _react2.default.createElement(
+		'li',
+		{ onClick: function onClick() {
+				return removeTodo(item.id);
+			} },
+		' ',
+		item.text,
+		' '
+	);
 };
 
 exports.default = TodoList;
@@ -7985,43 +7979,6 @@ exports.default = TodoList;
 
 /***/ }),
 /* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Todo = function (_React$Component) {
-  _inherits(Todo, _React$Component);
-
-  function Todo() {
-    _classCallCheck(this, Todo);
-
-    return _possibleConstructorReturn(this, (Todo.__proto__ || Object.getPrototypeOf(Todo)).apply(this, arguments));
-  }
-
-  return Todo;
-}(_react2.default.Component);
-
-exports.default = Todo;
-
-/***/ }),
-/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8058,11 +8015,11 @@ var TodoForm = function (_React$Component) {
 exports.default = TodoForm;
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(35);
+var content = __webpack_require__(34);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -8076,7 +8033,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(37)(content, options);
+var update = __webpack_require__(36)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -8108,10 +8065,10 @@ if(false) {
 }
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(36)(false);
+exports = module.exports = __webpack_require__(35)(false);
 // imports
 
 
@@ -8124,7 +8081,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8206,7 +8163,7 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -8272,7 +8229,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(38);
+var	fixUrls = __webpack_require__(37);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -8588,7 +8545,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8683,14 +8640,14 @@ module.exports = function (css) {
 };
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var v1 = __webpack_require__(40);
-var v4 = __webpack_require__(41);
+var v1 = __webpack_require__(39);
+var v4 = __webpack_require__(40);
 
 var uuid = v4;
 uuid.v1 = v1;
@@ -8699,7 +8656,7 @@ uuid.v4 = v4;
 module.exports = uuid;
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8813,7 +8770,7 @@ function v1(options, buf, offset) {
 module.exports = v1;
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

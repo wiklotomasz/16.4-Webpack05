@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from '../components/Title.js';
 import TodoList from '../components/TodoList.js';
-import Todo from '../components/Todo.js';
+//import Todo from '../components/Todo.js';
 import TodoForm from '../components/TodoForm.js';
 import style from './App.css';
 
@@ -43,7 +43,7 @@ class App extends React.Component {
     	return (
     		<div className={style.TodoApp}>		                                         {/* Loader CSS style.TodoApp */}
     			<Title apptitle='Witaj na mojej stronie' desc='opis strony' />                {/* komponent Title.js */}
-                <TodoList list={this.state.data} remove={this.removeItem.bind(this)} />                   
+                <TodoList list={this.state.data} remove={this.removeTodo.bind(this)} />                   
     		</div>
         );
     }
